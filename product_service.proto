@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package Incadea.Protos.Product;
+import "google/protobuf/timestamp.proto";
+import "Protos/Product/product.proto";
+
+message ProductResponse
+{
+    oneof message 
+    {
+        ProductMsg response = 1;
+        Error error = 2;
+    }
+}
+
+message SearchProductResponse{
+    oneof message 
+    {
+        SearchProductMsg response = 1;
+        Error error = 2;
+    }
+}
+
+service Product
+{
+    rpc UpsertItem (ProductMsg) returns (ProductResponse);
+	rpc UpsertService (ProductMsg) returns (ProductResponse);
+    rpc SearchService (ProductMsg) returns (SearchProductResponse);
+	rpc SearchItem (ProductMsg) returns (SearchProductResponse);
+}

@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package Incadea.Protos.Product;
+import "google/protobuf/timestamp.proto";
+
+enum ProductType
+{
+    ITEM = 0;
+    SERVICE = 1;
+}
+
+message ProductPriceGroup
+{
+    string id = 1;
+    string code = 2;
+    string display_name = 3;
+}
+
+message Error
+{
+    string code = 1;
+    string message = 2;
+}
+
+message Brand
+{
+	string id = 1;
+	string code = 2;
+	string display_name = 3;
+}
+
+message UnitOfMeasure
+{
+    string id = 1;
+    string code = 2;
+    string display_name = 3;
+    float conversion = 4;
+}
+
+message StandardTime
+{
+    string id = 1;
+    string labor_type = 2;
+    float time = 3;
+}
+
+message ProductMsg
+{
+    string id = 1;
+	ProductType product_type = 2;
+    string code = 3;
+	string display_name = 4;
+    string manufacturer_id = 5;
+    Brand brand = 6;
+	repeated UnitOfMeasure units_of_measure = 7;
+    ProductPriceGroup product_price_group = 8;
+    string product_group_id = 9;
+    string product_tax_group_id = 10;
+	float unit_price = 11;
+    repeated StandardTime standard_times = 12;
+	google.protobuf.Timestamp modified_on = 13;
+}
+
+message SearchProductMsg
+{
+	repeated ProductMsg products = 1;
+}
