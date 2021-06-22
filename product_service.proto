@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package Incadea.Protos.Product;
 import "google/protobuf/timestamp.proto";
-import "Protos/Product/product.proto";
+import "product.proto";
 
 message ProductResponse
 {
